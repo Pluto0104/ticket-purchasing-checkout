@@ -8,14 +8,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
-import {
-  PurchaseContext,
-  PurchaseContextDataType,
-} from "../../../app/PurchaseProvider";
+import { usePurchaseContext } from "../../../app/PurchaseProvider";
 
 const Delivery = () => {
   const { deliveryType, location, setDeliveryType, setLocation, setErrorMsg } =
-    React.useContext<PurchaseContextDataType>(PurchaseContext);
+    usePurchaseContext();
 
   React.useEffect(() => {
     setDeliveryType(0);

@@ -1,13 +1,9 @@
-import * as React from "react";
 import ShowsList from "./ShowsList";
 import Delivery from "./Delivery";
 import Payment from "./Payment";
 import CustomStepper from "../../../components/CustomStepper";
 import { StepType } from "../../../app/types/stepItem";
-import {
-  PurchaseContext,
-  PurchaseContextDataType,
-} from "../../../app/PurchaseProvider";
+import { usePurchaseContext } from "../../../app/PurchaseProvider";
 
 const steps: StepType[] = [
   {
@@ -28,8 +24,7 @@ const steps: StepType[] = [
 ];
 
 const PurchaseStepper = () => {
-  const { errorMsg } =
-    React.useContext<PurchaseContextDataType>(PurchaseContext);
+  const { errorMsg } = usePurchaseContext();
   return (
     <CustomStepper steps={steps} disableNextBtn={!!errorMsg} disableReset />
   );

@@ -158,4 +158,6 @@ const PurchaseProvider = ({ children }: React.PropsWithChildren<{}>) => {
   );
 };
 
-export { PurchaseProvider as default, PurchaseContext };
+const usePurchaseContext = () =>
+  React.useContext<PurchaseContextDataType>(PurchaseContext);
+export { PurchaseProvider as default, PurchaseContext, usePurchaseContext };

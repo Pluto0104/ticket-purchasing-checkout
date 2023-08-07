@@ -11,10 +11,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList, ListChildComponentProps } from "react-window";
 import { ShowItemType } from "../../../app/types/showItem";
-import {
-  PurchaseContext,
-  PurchaseContextDataType,
-} from "../../../app/PurchaseProvider";
+import { usePurchaseContext } from "../../../app/PurchaseProvider";
 
 interface CustomListChildComponentProps extends ListChildComponentProps {
   selectedRow: number | null;
@@ -112,7 +109,7 @@ const CustomListItem: React.FC<CustomListChildComponentProps> = ({
 
 const ShowsList: React.FC = () => {
   const { shows, showId, setShowId, quantity, setQuantity, setErrorMsg } =
-    React.useContext<PurchaseContextDataType>(PurchaseContext);
+    usePurchaseContext();
 
   React.useEffect(() => {
     if (!showId) setErrorMsg("Please select show.");

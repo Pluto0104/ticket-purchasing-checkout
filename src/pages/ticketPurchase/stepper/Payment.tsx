@@ -16,10 +16,7 @@ import AddCardIcon from "@mui/icons-material/AddCard";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
-import {
-  PurchaseContext,
-  PurchaseContextDataType,
-} from "../../../app/PurchaseProvider";
+import { usePurchaseContext } from "../../../app/PurchaseProvider";
 
 const Payment = () => {
   const {
@@ -29,7 +26,7 @@ const Payment = () => {
     setPaymentType,
     setSecurityCode,
     setErrorMsg,
-  } = React.useContext<PurchaseContextDataType>(PurchaseContext);
+  } = usePurchaseContext();
 
   React.useEffect(() => {
     setPaymentType(0);

@@ -1,18 +1,14 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Link from "@mui/material/Link";
-import {
-  PurchaseContext,
-  PurchaseContextDataType,
-} from "../../app/PurchaseProvider";
+import { usePurchaseContext } from "../../app/PurchaseProvider";
 
 const Total = () => {
   const { shows, showId, quantity, deliveryType, securityCode, errorMsg } =
-    React.useContext<PurchaseContextDataType>(PurchaseContext);
+    usePurchaseContext();
 
   const show = shows.find((show) => show.id === showId);
   const price = show?.price || 0;
