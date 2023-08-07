@@ -33,25 +33,27 @@ const Payment = () => {
 
   React.useEffect(() => {
     setPaymentType(0);
+    setErrorMsg("Please input correct security code.");
   }, []);
 
   React.useEffect(() => {
     if (paymentType == null) setErrorMsg("Please select payment type.");
-    else setErrorMsg(null);
-  }, [paymentType]);
+    else if (!securityCode) setErrorMsg("Please input security code.");
+    else if (securityCode) {
+      const regex = /^\d{3}$/;
+      const isValid = regex.test(securityCode);
+      setErrorMsg(isValid ? null : "Please input correct security code.");
+    } else setErrorMsg(null);
+  }, [paymentType, securityCode]);
 
   const handleChangeRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentType(parseInt((event.target as HTMLInputElement).value));
+    setPaymentType(parseInt(event.target.value));
   };
 
   const handleChangeSecurityCode = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const inputValue = event.target.value;
-    const regex = /^\d{3}$/;
-    const isValid = regex.test(inputValue);
-    setSecurityCode(inputValue);
-    setErrorMsg(isValid ? null : "Please input correct security code.");
+    setSecurityCode(event.target.value);
   };
 
   return (
